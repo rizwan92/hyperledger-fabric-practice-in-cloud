@@ -2,7 +2,7 @@ version: '2'
 
 networks:
   hf-exp:
-  
+
 services:
 
   peer0.org1.ksachdeva-exp.com:
@@ -10,6 +10,7 @@ services:
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
+    network_mode: host
     environment:
       - CORE_PEER_ID=peer0.org1.ksachdeva-exp.com
       - CORE_PEER_ADDRESS=peer0.org1.ksachdeva-exp.com:7051
@@ -30,6 +31,7 @@ services:
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
+    network_mode: host
     environment:
       - CORE_PEER_ID=peer1.org1.ksachdeva-exp.com
       - CORE_PEER_ADDRESS=peer1.org1.ksachdeva-exp.com:7051
@@ -50,6 +52,7 @@ services:
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
+    network_mode: host
     environment:
       - CORE_PEER_ID=peer0.org2.ksachdeva-exp.com
       - CORE_PEER_ADDRESS=peer0.org2.ksachdeva-exp.com:7051
@@ -70,6 +73,7 @@ services:
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
+    network_mode: host
     environment:
       - CORE_PEER_ID=peer1.org2.ksachdeva-exp.com
       - CORE_PEER_ADDRESS=peer1.org2.ksachdeva-exp.com:7051
@@ -90,6 +94,7 @@ services:
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
+    network_mode: host
     environment:
       - CORE_PEER_ID=peer0.org3.ksachdeva-exp.com
       - CORE_PEER_ADDRESS=peer0.org3.ksachdeva-exp.com:7051
@@ -110,6 +115,7 @@ services:
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
+    network_mode: host
     environment:
       - CORE_PEER_ID=peer1.org3.ksachdeva-exp.com
       - CORE_PEER_ADDRESS=peer1.org3.ksachdeva-exp.com:7051
@@ -123,4 +129,5 @@ services:
     ports:
       - "12051:7051"
       - "12053:7053"
+
 

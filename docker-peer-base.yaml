@@ -2,7 +2,6 @@ version: '2'
 
 services:
   peer-base:
-    network_mode: host
     image: hyperledger/fabric-peer
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock

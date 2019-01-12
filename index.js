@@ -12,10 +12,7 @@ const ORDERER_TLS_CAROOT_PATH = './crypto-config/ordererOrganizations/ksachdeva-
 const CHANNEL_NAME = 'ksachdeva-exp-channel-1'
 const CHAIN_CODE_ID = 'ksachdeva-exp-cc'
 
-async function getClient(orgn,adminmsp,mspid) {
-    console.log(orgn);
-    console.log(adminmsp);
-    
+async function getClient(orgn, adminmsp, mspid) {
     var client = new Client();
     console.log('Setting up the cryptoSuite ..');
     const cryptoSuite = Client.newCryptoSuite();
@@ -30,7 +27,6 @@ async function getClient(orgn,adminmsp,mspid) {
     });
     client.setStateStore(store);
     console.log('Setting up the keyvalue store ..');
-
     const ORG_ADMIN_MSP = adminmsp;
     const privateKeyFile = fs.readdirSync(__dirname + "/" + ORG_ADMIN_MSP + '/keystore')[0];
 
@@ -46,6 +42,7 @@ async function getClient(orgn,adminmsp,mspid) {
     });
     return client
 }
+
 
 async function getOrderer(client) {
     // build an orderer that will be used to connect to it
@@ -77,17 +74,17 @@ const ORG3_MSP_ID = 'Org3MSP'
 
 async function mainChannel() {
 
-    const org1Client = await getClient(org1,ORG1_ADMIN_MSP,ORG1_MSP_ID);
+    const org1Client = await getClient(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID);
     const orderer = await getOrderer(org1Client);
 
     // read in the envelope for the channel config raw bytes
     console.log('Reading the envelope from manually created channel transaction ..');
     const envelope = fs.readFileSync(path.join(__dirname, CHANNEL_1_PATH));
-    
+
     // extract the configuration
     console.log('Extracting the channel configuration ..');
     const channelConfig = org1Client.extractChannelConfig(envelope);
-    
+
 
     console.log('Signing the extracted channel configuration ..');
     const signature1 = org1Client.signChannelConfig(channelConfig);
@@ -99,7 +96,7 @@ async function mainChannel() {
         orderer: orderer,
         txId: org1Client.newTransactionID()
     };
-    
+
     try {
         console.log('Sending the request to create the channel ..');
         var response = await org1Client.createChannel(channelRequest);
@@ -112,16 +109,60 @@ async function mainChannel() {
     console.log(response);
 }
 
-// getClient().then(async (client) => {
 
-//     const orderer = await getOrderer(client);
-//     // console.log(orderer);
+const PEERS = {
+    org1: {
+        peers: [
+            {
+                url: 'grpcs://34.73.7.252:7051' // peer0
+            },
+            {
+                url: 'grpcs://34.73.7.252:8051' // peer1
+            }
+        ]
+    },
+    org2: {
+        peers: [
+            {
+                url: 'grpcs://34.73.7.252:9051' // peer0
+            },
+            {
+                url: 'grpcs://34.73.7.252:10051' // peer1
+            }
+        ]
+    },
+    org3: {
+        peers: [
+            {
+                url: 'grpcs://34.73.7.252:11051' // peer0
+            },
+            {
+                url: 'grpcs://34.73.7.252:12051' // peer1
+            }
+        ]
+    }
+};
 
-// })
+async function getPeers(client, org) {
+    const peers = [];
+    for (let i = 0; i < 2; i++) {
+        const tls_cacert = `./crypto-config/peerOrganizations/${org}.ksachdeva-exp.com/peers/peer${i}.${org}.ksachdeva-exp.com/tls/ca.crt`;
+        const data = fs.readFileSync(path.join(__dirname, tls_cacert));
+        const p = client.newPeer(PEERS[org].peers[i].url, {
+            'pem': Buffer.from(data).toString(),
+            'ssl-target-name-override': `peer${i}.${org}.ksachdeva-exp.com`
+        });
+        peers[i] = p;
+    }
+    return peers;
+}
 
-mainChannel()
 
-
-
+module.exports = {
+    getClient: getClient,
+    getOrderer: getOrderer,
+    createChannel: mainChannel,
+    getPeers: getPeers,
+}
 
 

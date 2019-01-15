@@ -37,13 +37,13 @@ async function joinOrgPeersToChannel() {
     const peers = await myClient.getPeers(client, org1);
 
     
-    // const proposalResponse = await channel.joinChannel({
-    //     txId: client.newTransactionID(),
-    //     block: genesis_block,
-    //     targets: peers
-    // });
+    const proposalResponse = await channel.joinChannel({
+        txId: client.newTransactionID(),
+        block: genesis_block,
+        targets: peers
+    });
 
-    // console.log(proposalResponse);
+    console.log(proposalResponse);
 }
 
 joinOrgPeersToChannel()

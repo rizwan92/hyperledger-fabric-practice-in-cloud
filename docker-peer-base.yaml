@@ -20,3 +20,5 @@ services:
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
+    extra_hosts:
+    - "orderer.ksachdeva-exp.com:35.244.39.147"

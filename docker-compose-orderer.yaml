@@ -26,5 +26,12 @@ services:
     - ./genesis.block:/var/hyperledger/orderer/orderer.genesis.block
     - ./crypto-config/ordererOrganizations/ksachdeva-exp.com/orderers/orderer.ksachdeva-exp.com/msp:/var/hyperledger/orderer/msp
     - ./crypto-config/ordererOrganizations/ksachdeva-exp.com/orderers/orderer.ksachdeva-exp.com/tls/:/var/hyperledger/orderer/tls
+    extra_hosts:
+    - "peer0.org1.ksachdeva-exp.com:34.73.7.252"
+    - "peer1.org1.ksachdeva-exp.com:34.73.7.252"
+    - "peer0.org2.ksachdeva-exp.com:34.73.7.252"
+    - "peer1.org2.ksachdeva-exp.com:34.73.7.252"
+    - "peer0.org3.ksachdeva-exp.com:34.73.7.252"
+    - "peer1.org3.ksachdeva-exp.com:34.73.7.252"
     ports:
       - 7050:7050

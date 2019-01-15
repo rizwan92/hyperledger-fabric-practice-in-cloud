@@ -30,7 +30,7 @@ Organizations:
         MSPDir: crypto-config/peerOrganizations/org3.ksachdeva-exp.com/msp
         AnchorPeers:
             - Host: peer0.org3.ksachdeva-exp.com
-              Port: 7051
+            Port: 7051
 
 Orderer: &OrdererDefaults
 

@@ -1,9 +1,7 @@
-version: '3'
+version: '2'
 
 networks:
   hf-exp:
-    external:
-      name: hf-exp
 
 services:
 

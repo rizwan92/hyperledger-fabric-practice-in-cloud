@@ -1,8 +1,7 @@
-version: '3'
+version: '2'
 
 networks:
   hf-exp:
-    driver: overlay
 
 services:
 

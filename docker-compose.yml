@@ -8,7 +8,6 @@ networks:
 services:
 
   peer0.org1.ksachdeva-exp.com:
-    container_name: peer0.org1.ksachdeva-exp.com
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
@@ -29,7 +28,6 @@ services:
       - hf-exp
 
   peer1.org1.ksachdeva-exp.com:
-    container_name: peer1.org1.ksachdeva-exp.com
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
@@ -50,7 +48,6 @@ services:
       - hf-exp
 
   peer0.org2.ksachdeva-exp.com:
-    container_name: peer0.org2.ksachdeva-exp.com
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
@@ -71,7 +68,6 @@ services:
       - hf-exp
 
   peer1.org2.ksachdeva-exp.com:
-    container_name: peer1.org2.ksachdeva-exp.com
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
@@ -92,7 +88,6 @@ services:
       - hf-exp
 
   peer0.org3.ksachdeva-exp.com:
-    container_name: peer0.org3.ksachdeva-exp.com
     extends:
       file:  docker-peer-base.yaml
       service: peer-base
@@ -113,7 +108,6 @@ services:
       - hf-exp
 
   peer1.org3.ksachdeva-exp.com:
-    container_name: peer1.org3.ksachdeva-exp.com
     extends:
       file:  docker-peer-base.yaml
       service: peer-base

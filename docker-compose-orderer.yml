@@ -7,7 +7,6 @@ networks:
 services:
 
   orderer.example.com:
-    container_name: orderer.ksachdeva-exp.com
     image: hyperledger/fabric-orderer
     environment:
       - ORDERER_GENERAL_LOGLEVEL=debug

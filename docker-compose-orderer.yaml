@@ -1,8 +1,8 @@
 version: '2'
 
-# networks:
-#   hf-exp:
-#     driver: host
+networks:
+  hf-exp:
+    driver: overlay
 
 services:
 
@@ -36,4 +36,5 @@ services:
     - "peer1.org3.ksachdeva-exp.com:34.73.7.252"
     ports:
       - 7050:7050
-    network_mode: "host"
+    networks:
+      - hf-exp

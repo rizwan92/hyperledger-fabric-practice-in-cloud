@@ -1,8 +1,5 @@
 version: '2'
 
-networks:
-  hf-exp:
-
 services:
 
   peer0.org1.ksachdeva-exp.com:
@@ -24,7 +21,7 @@ services:
       - 7051:7051
       - 7053:7053
     networks:
-      - hf-exp
+      - host
 
   peer1.org1.ksachdeva-exp.com:
     container_name: peer1.org1.ksachdeva-exp.com
@@ -45,7 +42,7 @@ services:
       - 8051:7051
       - 8053:7053
     networks:
-      - hf-exp
+      - host
 
   peer0.org2.ksachdeva-exp.com:
     container_name: peer0.org2.ksachdeva-exp.com
@@ -66,7 +63,7 @@ services:
       - 9051:7051
       - 9053:7053
     networks:
-      - hf-exp
+      - host
 
   peer1.org2.ksachdeva-exp.com:
     container_name: peer1.org2.ksachdeva-exp.com
@@ -87,7 +84,7 @@ services:
       - 10051:7051
       - 10053:7053
     networks:
-      - hf-exp
+      - host
 
   peer0.org3.ksachdeva-exp.com:
     container_name: peer0.org3.ksachdeva-exp.com
@@ -108,7 +105,7 @@ services:
       - 11051:7051
       - 11053:7053
     networks:
-      - hf-exp
+      - host
 
   peer1.org3.ksachdeva-exp.com:
     container_name: peer1.org3.ksachdeva-exp.com
@@ -129,4 +126,4 @@ services:
       - 12051:7051
       - 12053:7053
     networks:
-      - hf-exp
+      - host

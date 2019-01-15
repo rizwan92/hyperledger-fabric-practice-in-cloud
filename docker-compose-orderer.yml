@@ -6,7 +6,7 @@ networks:
 
 services:
 
-  orderer.example.com:
+  orderer:
     image: hyperledger/fabric-orderer
     environment:
       - ORDERER_GENERAL_LOGLEVEL=debug

@@ -41,12 +41,12 @@ async function installChaincodeOnPeers(orgn, adminmsp, mspid) {
     // Below I am just tricking it by setting the GOPATH environment
     // variable and pointing it to the directory that contains the
     // actual chain code
-    process.env.GOPATH = path.join(__dirname, './chaincode');
+    process.env.GOPATH = path.join(__dirname, './chaincode');    
     try {
         var proposalResponse = await client.installChaincode({
             targets: peers,
             chaincodeId: CHAIN_CODE_ID,
-            chaincodePath: 'github.com/example_cc.go',
+            chaincodePath: 'src/github.com/example_cc.go',
             chaincodeVersion: 'v2'
         });
 
@@ -68,5 +68,5 @@ async function letsqueryInstalledChaincodes(orgn, adminmsp, mspid) {
     
     }
 
-// installChaincodeOnPeers(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID)
-letsqueryInstalledChaincodes(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID)
+installChaincodeOnPeers(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID)
+// letsqueryInstalledChaincodes(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID)

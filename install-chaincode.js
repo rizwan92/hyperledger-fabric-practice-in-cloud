@@ -19,10 +19,10 @@ const ORG3_MSP_ID = 'Org3MSP'
 const CHANNEL_NAME = 'ksachdeva-exp-channel-1'
 const CHAIN_CODE_ID = 'ksachdeva-exp-cc'
 
-async function installChaincodeOnPeers(orgn) {
+async function installChaincodeOnPeers(orgn, adminmsp, mspid) {
 
-    const client = await getClient(orgn, ORG1_ADMIN_MSP, ORG1_MSP_ID);
-    const orderer = await getOrderer(client);
+    const client = await myClient.getClient(orgn, adminmsp, mspid);
+    const orderer = await myClient.getOrderer(client);
 
     console.log('Creating a Channel object ..');
     const channel = client.newChannel(CHANNEL_NAME);
@@ -31,7 +31,7 @@ async function installChaincodeOnPeers(orgn) {
     channel.addOrderer(orderer);
 
     console.log('Getting the peers ..');
-    const peers = await getPeers(client, orgn);
+    const peers = await myClient.getPeers(client, org1);
 
 
     // Note-
@@ -41,15 +41,32 @@ async function installChaincodeOnPeers(orgn) {
     // Below I am just tricking it by setting the GOPATH environment
     // variable and pointing it to the directory that contains the
     // actual chain code
-    process.env.GOPATH = path.join(__dirname, '../chaincode');
+    process.env.GOPATH = path.join(__dirname, './chaincode');
+    try {
+        var proposalResponse = await client.installChaincode({
+            targets: peers,
+            chaincodeId: CHAIN_CODE_ID,
+            chaincodePath: 'github.com/example_cc.go',
+            chaincodeVersion: 'v2'
+        });
 
-    const proposalResponse = await client.installChaincode({
-        targets: peers,
-        chaincodeId: CHAIN_CODE_ID,
-        chaincodePath: 'github.com/example_cc',
-        chaincodeVersion: 'v0'
-    });
+    } catch (err) {
+        console.log(err.stack ? err.stack : err);
 
-    console.log(proposalResponse);
-    
+    }
+
+    console.log(proposalResponse[0]);
+
 }
+
+async function letsqueryInstalledChaincodes(orgn, adminmsp, mspid) {
+
+    const client = await myClient.getClient(orgn, adminmsp, mspid);
+    const peers = await myClient.getPeers(client, orgn);
+    const result = await client.queryInstalledChaincodes(peers[0],true)
+    console.log(result);
+    
+    }
+
+// installChaincodeOnPeers(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID)
+letsqueryInstalledChaincodes(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID)

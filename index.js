@@ -58,23 +58,8 @@ async function getOrderer(client) {
     return orderer
 }
 
-
-const org1 = 'org1';
-const org2 = 'org2';
-const org3 = 'org3';
-
-
-const ORG1_ADMIN_MSP = './crypto-config/peerOrganizations/org1.ksachdeva-exp.com/users/Admin@org1.ksachdeva-exp.com/msp';
-const ORG2_ADMIN_MSP = './crypto-config/peerOrganizations/org2.ksachdeva-exp.com/users/Admin@org2.ksachdeva-exp.com/msp';
-const ORG3_ADMIN_MSP = './crypto-config/peerOrganizations/org3.ksachdeva-exp.com/users/Admin@org3.ksachdeva-exp.com/msp';
-
-const ORG1_MSP_ID = 'Org1MSP'
-const ORG2_MSP_ID = 'Org2MSP'
-const ORG3_MSP_ID = 'Org3MSP'
-
-async function mainChannel() {
-
-    const org1Client = await getClient(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID);
+async function mainChannel(orgn,orgnadminmsp,orgnmsp,channelName) {
+    const org1Client = await getClient(orgn, orgnadminmsp, orgnmsp);
     const orderer = await getOrderer(org1Client);
 
     // read in the envelope for the channel config raw bytes
@@ -90,7 +75,7 @@ async function mainChannel() {
     const signature1 = org1Client.signChannelConfig(channelConfig);
     // prepare the request
     const channelRequest = {
-        name: CHANNEL_NAME,
+        name: channelName,
         config: channelConfig,
         signatures: [signature1],
         orderer: orderer,

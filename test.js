@@ -1,6 +1,8 @@
 const Client = require('fabric-client');
 const myClient = require('./index.js');
 var await = require('await')
+const KEY_STORE_PATH_ADMIN = './keystore/admin';
+
 const org1 = 'org1';
 const org2 = 'org2';
 const org3 = 'org3';
@@ -17,37 +19,14 @@ const CHANNEL_NAME = 'ksachdeva-exp-channel-1'
 
 
 async function joinOrgPeersToChannel() {
-    const client = await myClient.getClient(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID);
+    const client = await myClient.getClient(org1, ORG1_ADMIN_MSP, ORG1_MSP_ID);    
     const orderer = await myClient.getOrderer(client);
-
-    console.log('Creating a Channel object ..');
     const channel = client.newChannel(CHANNEL_NAME);
+    console.log(channel);
+    channel.addOrderer(orderer);  
+    console.log(channel);
+      
 
-    console.log('Specifying the orderer to connect to ..');
-    channel.addOrderer(orderer);
-
-
-    console.log('Getting the genesis block for the ${CHANNEL_NAME} ..');
-    try {
-        var genesis_block = await channel.getGenesisBlock({
-            txId: client.newTransactionID()
-        });
-    } catch (error) {
-        console.log(error);
-        
-    }
-
-    console.log('Getting the peers ..');
-    const peers = await myClient.getPeers(client, org1);
-
-    
-    const proposalResponse = await channel.joinChannel({
-        txId: client.newTransactionID(),
-        block: genesis_block,
-        targets: peers
-    });
-
-    console.log(proposalResponse);
 }
 
 joinOrgPeersToChannel()

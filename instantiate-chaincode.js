@@ -41,7 +41,7 @@ async function instantiateChaincodeOnPeers(orgn, adminmsp, mspid) {
     console.log('Sending the Instantiate Proposal ..');
     const proposalResponse = await channel.sendInstantiateProposal({
         chaincodeId: CHAIN_CODE_ID,
-        chaincodeVersion: 'v1',
+        chaincodeVersion: 'v0',
         fcn: 'init',
         args: ["a", "100", "b", "200"],
         txId: client.newTransactionID()

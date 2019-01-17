@@ -17,6 +17,7 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.ksachdeva-exp.com:7051
       - CORE_PEER_LOCALMSPID=Org1MSP
     volumes:
+        - ./chaincode/src/github.com/:/opt/gopath/src/github.com/
         - /var/run/:/host/var/run/
         - ./production/org1-peer0:/var/hyperledger/production
         - ./crypto-config/peerOrganizations/org1.ksachdeva-exp.com/peers/peer0.org1.ksachdeva-exp.com/msp:/etc/hyperledger/fabric/msp
@@ -37,6 +38,7 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org1.ksachdeva-exp.com:7051
       - CORE_PEER_LOCALMSPID=Org1MSP
     volumes:
+        - ./chaincode/src/github.com/:/opt/gopath/src/github.com/
         - /var/run/:/host/var/run/
         - ./production/org1-peer1:/var/hyperledger/production
         - ./crypto-config/peerOrganizations/org1.ksachdeva-exp.com/peers/peer1.org1.ksachdeva-exp.com/msp:/etc/hyperledger/fabric/msp
@@ -57,6 +59,7 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.ksachdeva-exp.com:7051
       - CORE_PEER_LOCALMSPID=Org2MSP
     volumes:
+        - ./chaincode/src/github.com/:/opt/gopath/src/github.com/
         - /var/run/:/host/var/run/
         - ./production/org2-peer0:/var/hyperledger/production
         - ./crypto-config/peerOrganizations/org2.ksachdeva-exp.com/peers/peer0.org2.ksachdeva-exp.com/msp:/etc/hyperledger/fabric/msp
@@ -77,6 +80,7 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org2.ksachdeva-exp.com:7051
       - CORE_PEER_LOCALMSPID=Org2MSP
     volumes:
+        - ./chaincode/src/github.com/:/opt/gopath/src/github.com/
         - /var/run/:/host/var/run/
         - ./production/org2-peer1:/var/hyperledger/production
         - ./crypto-config/peerOrganizations/org2.ksachdeva-exp.com/peers/peer1.org2.ksachdeva-exp.com/msp:/etc/hyperledger/fabric/msp
@@ -97,6 +101,7 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org3.ksachdeva-exp.com:7051
       - CORE_PEER_LOCALMSPID=Org3MSP
     volumes:
+        - ./chaincode/src/github.com/:/opt/gopath/src/github.com/
         - /var/run/:/host/var/run/
         - ./production/org3-peer0:/var/hyperledger/production
         - ./crypto-config/peerOrganizations/org3.ksachdeva-exp.com/peers/peer0.org3.ksachdeva-exp.com/msp:/etc/hyperledger/fabric/msp
@@ -117,6 +122,7 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org3.ksachdeva-exp.com:7051
       - CORE_PEER_LOCALMSPID=Org3MSP
     volumes:
+        - ./chaincode/src/github.com/:/opt/gopath/src/github.com/
         - /var/run/:/host/var/run/
         - ./production/org3-peer2:/var/hyperledger/production
         - ./crypto-config/peerOrganizations/org3.ksachdeva-exp.com/peers/peer1.org3.ksachdeva-exp.com/msp:/etc/hyperledger/fabric/msp

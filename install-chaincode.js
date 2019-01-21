@@ -47,7 +47,7 @@ async function installChaincodeOnPeers(orgn, adminmsp, mspid) {
             targets: peers,
             chaincodeId: CHAIN_CODE_ID,
             chaincodePath: 'github.com/example_cc',
-            chaincodeVersion: 'v2'
+            chaincodeVersion: 'v3'
         });
 
     } catch (err) {

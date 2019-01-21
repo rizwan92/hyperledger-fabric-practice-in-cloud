@@ -1,7 +1,7 @@
 version: '2'
 
 networks:
-  hyperledger-fabric-practice-in-cloud_hf-exp:
+  hf-exp:
 
 services:
 
@@ -16,7 +16,6 @@ services:
       - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
       # enabled TLS
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hyperledger-fabric-practice-in-cloud_hf-exp
       - ORDERER_GENERAL_TLS_ENABLED=true
       - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
       - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
@@ -37,4 +36,4 @@ services:
     ports:
       - 7050:7050
     networks:
-      - hyperledger-fabric-practice-in-cloud_hf-exp
+      - hf-exp

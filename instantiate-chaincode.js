@@ -44,7 +44,8 @@ async function instantiateChaincodeOnPeers(orgn, adminmsp, mspid) {
         chaincodeVersion: 'v0',
         fcn: 'init',
         args: ["a", "100", "b", "200"],
-        txId: client.newTransactionID()
+        txId: client.newTransactionID(),
+        chaincodeType:'golang'
     });
 
     console.log(proposalResponse);

@@ -46,7 +46,7 @@ async function installChaincodeOnPeers(orgn, adminmsp, mspid) {
         var proposalResponse = await client.installChaincode({
             targets: peers,
             chaincodeId: CHAIN_CODE_ID,
-            chaincodePath: 'github.com/example_cc.go',
+            chaincodePath: 'github.com/example_cc',
             chaincodeVersion: 'v2'
         });
 

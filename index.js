@@ -4,7 +4,7 @@ const Client = require('fabric-client');
 var await = require('await')
 const CHANNEL_1_PATH = './ksachdeva-exp-channel-1.tx';
 const KEY_STORE_PATH_ADMIN = './keystore/admin';
-const ORDERER_URL = 'grpcs://35.244.39.147:7050';
+const ORDERER_URL = 'grpcs://104.196.33.192:7050';
 const ORDERER_TLS_CAROOT_PATH = './crypto-config/ordererOrganizations/ksachdeva-exp.com/orderers/orderer.ksachdeva-exp.com/tls/ca.crt';
 
 
@@ -99,30 +99,30 @@ const PEERS = {
     org1: {
         peers: [
             {
-                url: 'grpcs://34.73.7.252:7051' // peer0
+                url: 'grpcs://34.73.236.174:7051' // peer0
             },
             {
-                url: 'grpcs://34.73.7.252:8051' // peer1
+                url: 'grpcs://34.73.236.174:8051' // peer1
             }
         ]
     },
     org2: {
         peers: [
             {
-                url: 'grpcs://34.73.7.252:9051' // peer0
+                url: 'grpcs://34.73.236.174:9051' // peer0
             },
             {
-                url: 'grpcs://34.73.7.252:10051' // peer1
+                url: 'grpcs://34.73.236.174:10051' // peer1
             }
         ]
     },
     org3: {
         peers: [
             {
-                url: 'grpcs://34.73.7.252:11051' // peer0
+                url: 'grpcs://34.73.236.174:11051' // peer0
             },
             {
-                url: 'grpcs://34.73.7.252:12051' // peer1
+                url: 'grpcs://34.73.236.174:12051' // peer1
             }
         ]
     }

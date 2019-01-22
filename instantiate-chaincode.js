@@ -48,15 +48,15 @@ async function instantiateChaincodeOnPeers(orgn, adminmsp, mspid) {
         chaincodeType:'golang'
     });
 
-    console.log(proposalResponse);
     
 
-    // console.log('Sending the Transaction ..');
-    // const transactionResponse = await channel.sendTransaction({
-    //     proposalResponses: proposalResponse[0],
-    //     proposal: proposalResponse[1]
-    // });
-
+    console.log('Sending the Transaction ..');
+    const transactionResponse = await channel.sendTransaction({
+        proposalResponses: proposalResponse[0],
+        proposal: proposalResponse[1]
+    });
+    console.log(transactionResponse);
+    
 }
 
 async function main() {

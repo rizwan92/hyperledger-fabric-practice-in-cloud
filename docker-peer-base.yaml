@@ -22,4 +22,4 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     extra_hosts:
-    - "orderer.ksachdeva-exp.com:35.244.39.147"
+    - "orderer.ksachdeva-exp.com:104.196.33.192"
